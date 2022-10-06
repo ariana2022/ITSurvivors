@@ -1,14 +1,21 @@
 const boom = require('@hapi/boom');
 
+const sequelize = require('../libs/sequelize');
+
 class UserService {
-  constructor() {}
+  constructor() {
+    this.pool = pool;
+    this.pool.on('error', (err) => console.log(err));
+  }
 
   async create(data) {
     return data;
   }
 
   async find() {
-    return [];
+    const query = 'SELECT * FROM users';
+    const [data] = await sequelize.query(query)
+    return data;
   }
 
   async findOne(id) {

@@ -1,14 +1,15 @@
 version: "3.3"
 
 services:
-  mysql:
+  db-mysql:
     image: mysql:5
     # restart: always
     environment:
-      - MYSQL_DAT=itsurvivors
-      - MYSQL_ROOT=root
-      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_DATABASE=itsurvivors
+      - MYSQL_USER=proyect
+      - MYSQL_ROOT_PASSWORD=proyect123
+      - MYSQL_PORT=3306
     ports:
-      - 3307:3307
+      - 3306:3306
     volumes:
-      - "./:/var/lib/mysql"
+      - "./mysql_data:/var/lib/mysql"
